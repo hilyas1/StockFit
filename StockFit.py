@@ -20,10 +20,13 @@ tick=yf.Ticker(ticker)
 df = tick.history(start=date_start, end=date_end)
 try:
     if df.shape[0]>0:
-        st.header(tick.info["shortName"])
-        st.image(tick.info['logo_url'])
+        try:
+            st.header(tick.info["shortName"])
+            st.image(tick.info['logo_url'])
+        except:
+            st.header(ticker.upper())
         chart=px.line(df, y="Close")
-        chart.update_layout(title=f"{ticker} Stock Close Price Chart", yaxis_title="Closing Price", height=800, width=1200)
+        chart.update_layout(title=f"{ticker.upper()} Stock Close Price Chart", yaxis_title="Closing Price", height=800, width=1200)
         st.plotly_chart(chart)
         st.header("Get Predicted Prices")
         days = st.sidebar.number_input("Days to predict",format="%i", step=1, min_value=1, max_value=30)
