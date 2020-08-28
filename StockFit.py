@@ -3,7 +3,7 @@ import yfinance as yf
 from datetime import datetime, date
 import h2o
 from h2o.automl import H2OAutoML
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.express as px
 
